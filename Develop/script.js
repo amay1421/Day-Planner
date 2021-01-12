@@ -1,17 +1,63 @@
-// var date = moment().format("MMM Do YY h mm ss");
-// $("#currentDay").append(date);
 
-// let timesArr= ["9AM","10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"]; 
+let renderClock = function() {
+    moment(Date);
+    $("#currentDay").text(moment().format('dddd, MMMM Do, YYYY | h:mm:ss A'));
+}
 
-moment(Date);
-$("#currentDay").text(moment().format('dddd MMMM Do YYYY, h:mm a'));
+renderClock();
+setInterval(renderClock,1000);
 
-var currentTime = moment();
-currentTime = currentTime.startOf("hour");
+// get data from localstorage
+var currentData = JSON.parse(localStorage.getItem('DaySchedule')) || [];
+
+// get all input boxes
+var inputBoxes = $(".textarea")
+console.log(inputBoxes)
+
+// color them accordingly
+for (let index = 0; index < inputBoxes.length; index++) {
+    
+    var thisHour = parseInt($(inputBoxes[index]).attr("id"));
+
+    //var currentHour = parseInt(moment().format('H'));
+    var currentHour = 14;
+
+    console.log(thisHour + ' vs. ' + currentHour + ' || ' + (thisHour < currentHour))
+    if(thisHour < currentHour) {
+        $(inputBoxes[index]).addClass('past');
+
+    } else if (thisHour > currentHour) {
+        $(inputBoxes[index]).addClass('future');
+    } else ($(inputBoxes[index]).addClass('present'))
+ 
+}
+
+// get all buttons
+var saveButtons = $(".saveBtn");
+
+// give all buttons an on click listener
+for (let index = 0; index < saveButtons.length; index++) {
+   
+    $(saveButtons[index]).on('click', function() {
+        var thisDataHour = $(this).attr('data-hour');
+
+        var noteToBeSaved = $('#' + thisDataHour).val();
+
+        var obj = {
+            hour: thisDataHour,
+            note: noteToBeSaved
+        }
+
+        currentData.push(obj);
+
+        localStorage.setItem('DaySchedule', JSON.stringify(currentData))
+
+
+    })
+}
 
 $('#planner-form').dayScheduleSelector({
 
-    // moment().format('LLL')  // January 11, 2021 4:26 PM
 })
 
 
