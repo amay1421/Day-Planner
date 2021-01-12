@@ -10,9 +10,8 @@ textarea{
   resize: none;
   color: #000000;
   border-left: 1px solid black;
-  height:100%;
-  width:100%;
-  position:absolute;
+  font-weight: bold;
+
 }
 
 .jumbotron {
@@ -38,7 +37,6 @@ textarea{
   height: 80px;
   border-top: 1px solid grey;
   font-weight:bold;
-  position:relative;
 }
 
 .hour {
@@ -79,4 +77,8 @@ textarea{
 
 .container {
   width: 1200px;
+}
+
+.test{
+  color:black;
 }
