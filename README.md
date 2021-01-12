@@ -4,7 +4,7 @@ This a personal day planner that allows users to schedule their work day. When a
 
 ![Day Planner](Day_planner.png)
 
-<strong>Deployed Link:</strong>
+<strong>Deployed Link:</strong> https://amay1421.github.io/Day-Planner/
 <br>
-<strong>Repo Link:</strong>
+<strong>Repo Link:</strong>https://github.com/amay1421/Day-Planner
 
